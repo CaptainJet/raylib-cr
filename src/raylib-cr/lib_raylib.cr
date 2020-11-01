@@ -358,7 +358,6 @@ lib LibRaylib
   alias RenderTexture2D = RenderTexture
   alias TextureCubemap = Texture
   alias Quaternion = Vector4
-  alias Music = MusicData*
   alias SpriteFont = Font
   alias Camera = Camera3D
 
@@ -567,8 +566,7 @@ lib LibRaylib
     data : Void*
   end
   
-  struct rAudioBuffer
-  end
+  alias RAudioBuffer = Void
 
   struct Sound
     stream : AudioStream
@@ -576,7 +574,7 @@ lib LibRaylib
   end
 
   struct AudioStream
-    buffer : rAudioBuffer*
+    buffer : RAudioBuffer*
     sampleRate : UInt32
     sampleSize : UInt32
     channels : UInt32
@@ -672,7 +670,6 @@ lib LibRaylib
 	fun set_config_flags = SetConfigFlags(flags : UInt32)
 	fun set_trace_log_level = SetTraceLogLevel(logType : Int32)
 	fun set_trace_log_exit = SetTraceLogExit(logType : Int32)
-	fun set_trace_log_callback = SetTraceLogCallback(callback : TraceLogCallback)
 	
 	fun trace_log = TraceLog(logType : Int32, text : UInt8*)
 	
@@ -818,7 +815,7 @@ lib LibRaylib
 	fun image_alpha_mask = ImageAlphaMask(image : Image*, alphaMask : Image)
 	fun image_alpha_premultiply = ImageAlphaPremultiply(image : Image*)
 	fun image_resize = ImageResize(image : Image*, newWidth : Int32, newHeight : Int32)
-	fun image_resize_nn = ImageResizeNN(image : Image*, newHeight : int newWidth,int)
+	fun image_resize_nn = ImageResizeNN(image : Image*, newWidth : Int32, newHeight : Int32)
 	fun image_resize_canvas = ImageResizeCanvas(image : Image*, newWidth : Int32, newHeight : Int32, offsetX : Int32, offsetY : Int32, fill : Color)
 	fun image_mipmaps = ImageMipmaps(image : Image*)
 	fun image_dither = ImageDither(image : Image*, rBpp : Int32, gBpp : Int32, bBpp : Int32, aBpp : Int32)
@@ -889,7 +886,7 @@ lib LibRaylib
 	fun load_font_from_image = LoadFontFromImage(image : Image, key : Color, firstChar : Int32) : Font
 	fun load_font_from_memory = LoadFontFromMemory(fileType : UInt8*, fileData : UInt8*, dataSize : Int32, fontSize : Int32, fontChars : Int32*, charsCount : Int32) : Font
 	fun load_font_data = LoadFontData(fileData : UInt8*, dataSize : Int32, fontSize : Int32, fontChars : Int32*, charsCount : Int32, type : Int32) : CharInfo*
-	fun gen_image_font_atlas = GenImageFontAtlas(chars : const CharInfo*, recs : Rectangle**, charsCount : Int32, fontSize : Int32, padding : Int32, packMethod : Int32) : Image
+	fun gen_image_font_atlas = GenImageFontAtlas(chars : CharInfo*, recs : Rectangle**, charsCount : Int32, fontSize : Int32, padding : Int32, packMethod : Int32) : Image
 	fun unload_font = UnloadFont(font : Font)
 	fun draw_fps = DrawFPS(posX : Int32, posY : Int32)
 	fun draw_text = DrawText(text : UInt8*, posX : Int32, posY : Int32, fontSize : Int32, color : Color)
@@ -903,7 +900,6 @@ lib LibRaylib
 	fun text_copy = TextCopy(dst : UInt8*, src : UInt8*) : Int32
 	fun text_is_equal = TextIsEqual(text1 : UInt8*, text2 : UInt8*) : Bool
 	fun text_length = TextLength(text : UInt8*) : UInt32
-	fun text_format = TextFormat(text : UInt8*, ... : ...) : UInt8*
 	fun text_subtext = TextSubtext(text : UInt8*, position : Int32, length : Int32) : UInt8*
 	fun text_replace = TextReplace(text : UInt8*, replace : UInt8*, by : UInt8*) : UInt8*
 	fun text_insert = TextInsert(text : UInt8*, insert : UInt8*, position : Int32) : UInt8*

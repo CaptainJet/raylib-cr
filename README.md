@@ -2,6 +2,8 @@
 
 # raylib-cr
 
+This is a fork of raylib-cr to update to 3.5 raylib.
+
 Crystal Bindings for `raylib`, a small and easy to use game development library.  
 As for now the bindings only support the raw function calls from raylib itself, a wrapper will be out shortly, 
 I plan on making a more object-oriented wrapper around raylib.  
@@ -62,6 +64,7 @@ These are my plans for `v1.0.0`
 - [ ] Proper testing with `crystal spec`
 - [ ] Setup Travis CI
 - [ ] OOP Wrapper
+- [ ] SetTraceLogCallback and TextFormat binding
 
 # Contributing
 
